@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login & Registration Form</title>
+        <!---Custom CSS File--->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="registration form">
+                <header>Signup</header>
+                <form action="{% url 'register'%}" method="post">{% csrf_token %}
+                    <input type="text" placeholder="Enter your email" name="email">
+                    <input type="password" placeholder="Create a password" name="password1">
+                    <input type="password" placeholder="Confirm your password" name="password2">
+                    <input type="submit" class="button" value="Signup">
+                </form>
+                <div class="signup">
+                    <span class="signup">Already have an account?
+                        <label for="check"><a href="{% url 'login'%}">Login</a>{% csrf_token%}</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

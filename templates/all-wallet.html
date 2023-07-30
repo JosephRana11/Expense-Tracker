@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All user Wallets
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<link rel='stylesheet' href="{% static 'css/all-wallet.css' %}">
+<div class="container">
+    <h1 class="display-3" style="margin-bottom: 2%;">All Active Wallets</h1>
+    <div class="row">
+        {% for item in obj %}
+        <div class="col-lg-4">
+            <div class="card card-margin">
+                <div class="card-header no-border">
+                    <h5 class="card-title">{{item.wallet_name}}</h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-primary">
+                                <span class="widget-49-date-day">{{item.wallet_creation_date.day}}</span>
+                                <span class="widget-49-date-day">{{item.wallet_creation_date|date:"M"}}</span>
+                            </div>
+                            <div class="widget-49-meeting-info">
+                                <span class="widget-49-pro-title">
+                                    Total Balance : {{item.wallet_currency}} {{item.wallet_capital}}
+                                </span>
+                                <span class="widget-49-meeting-time">Active and Running</span>
+                            </div>
+                        </div>
+                        <ol class="widget-49-meeting-points">
+                            <li class="widget-49-meeting-item"><span>0 Total Transactions</span></li>
+                            <li class="widget-49-meeting-item"><span class="widget-49-pro-title">Last Edited at 
+                                {% if item.wallet_edited_date is none %}
+                                  {{item.wallet_creation_date}}
+                                {% else %}
+                                  {{item.wallet_edited_date}}
+                                {% endif %}
+                            </span></li>
+                            <li class="widget-49-meeting-item"><span>(+-) since creation</span></li>
+                        </ol>
+                        <div class="widget-49-meeting-action">
+                            <a href="{% url 'edit-wallet' item.pk %}" class="btn btn-sm btn-flash-border-primary">Edit Wallet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title%}{% endblock %}
+{% block content%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <div class="div1">
+        <div class="dropdown custom-dropdown">
+          <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Transaction
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#">Add Income</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Deduct Expense</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    {% endblock%}
