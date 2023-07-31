@@ -4,37 +4,43 @@ Create New Wallet
 {% endblock%}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/createwallet.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/editwallet.css' %}">
 {% load crispy_forms_tags %}
-<form method="post" action="{% url 'edit-wallet' item.pk %}">{% csrf_token %}
-    <div class="container mt-5 mb-5 d-flex justify-content-center">
-        <div class="card px-1 py-4">
-            <div class="card-body">
-                <h1 class="card-title mb-3">Edit your Wallet</h1>
-                <h12 class="card-title mb-3">Your Existing Wallet Name and Capital({{item.wallet_currency}}).</h2>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <!-- <label for="name">Name</label> -->
-                            <input class="form-control" type="text" placeholder="Wallet Name" name="WalletName" value="{{item.wallet_name}}"">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input class="form-control" type="number" placeholder="Wallet Capital" name="WalletCapital" value="{{item.wallet_capital}}">
+<div class="edit-wallet-form">
+    <form method="post" action="{% url 'edit-wallet' item.pk %}">
+        {% csrf_token %}
+        <div class="container mt-5 mb-5 d-flex justify-content-center">
+            <div class="card px-1 py-4">
+                <div class="card-body">
+                    <h1 class="card-title mb-3">Edit your Wallet</h1>
+                    <h2 class="card-title mb-3">Your Existing Wallet Name and Capital ({{item.wallet_currency}}).</h2>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <!-- <label for="name">Name</label> -->
+                                <input class="form-control" type="text" placeholder="Wallet Name" name="WalletName"
+                                    value="{{item.wallet_name}}">
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" type="number" placeholder="Wallet Capital"
+                                        name="WalletCapital" value="{{item.wallet_capital}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column text-center px-5 mt-3 mb-3">
+                        <small class="agree-text">Wallet Currency Type is the only field that cannot be changed!</small>
+                    </div>
+                    <button class="btn btn-primary btn-block confirm-button" type="submit">Update</button>
                 </div>
-                <div class="d-flex flex-column text-center px-5 mt-3 mb-3">
-                    <small class="agree-text">Wallet Currency Type is the only field that cannot be changed!</small>
-                </div>
-                <button class="btn btn-primary btn-block confirm-button" type="submit">Update</button>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
+
 {% endblock %}

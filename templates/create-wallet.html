@@ -6,49 +6,135 @@ Create New Wallet
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/createwallet.css' %}">
 {% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
 
-<form method="post">{% csrf_token %}
-    <div class="container mt-5 mb-5 d-flex justify-content-center">
-        <div class="card px-1 py-4">
-            <div class="card-body">
-                <h1 class="card-title mb-3">Create your Wallet</h1>
-                <h3 class="card-title mb-3">To get started.</h3>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <!-- <label for="name">Name</label> -->
-                            <input class="form-control" type="text" placeholder="Wallet Name" name="WalletName">
-                        </div>
-                    </div>
-                </div>
-                <h6 class="card-title mb-3" style="margin-top: 3%;">Select your Currency</h6>
-                <div class="d-flex flex-row">
-                    <label class="radio mr-1">
-                        <input type="radio" name="WalletCurrency" value="NPR" checked>
-                        <span><i class="fa fa-user"></i> NPR </span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="WalletCurrency" value="USD">
-                        <span><i class="fa fa-plus-circle"></i> USD </span>
-                    </label>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input class="form-control" type="number" placeholder="Wallet Capital" name="WalletCapital">
+<head>
+    <!-- Your other head content goes here -->
+    <style>
+        .wallet-form body {
+            background-color: #FFEBEE;
+        }
+
+        .wallet-form .card {
+            width: 400px;
+            background-color: #fff;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .wallet-form label.radio {
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .wallet-form label.radio input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .wallet-form label.radio span {
+            padding: 7px 14px;
+            border: 2px solid #eee;
+            display: inline-block;
+            color: #039be5;
+            border-radius: 10px;
+            width: 100%;
+            height: 48px;
+            line-height: 27px;
+        }
+
+        .wallet-form label.radio input:checked+span {
+            border-color: #039BE5;
+            background-color: #81D4FA;
+            color: #fff;
+            border-radius: 9px;
+            height: 48px;
+            line-height: 27px;
+        }
+
+        .wallet-form .form-control {
+            margin-top: 10px;
+            height: 48px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+        }
+
+        .wallet-form .form-control:focus {
+            box-shadow: none;
+            border: 2px solid #039BE5;
+        }
+
+        .wallet-form .agree-text {
+            font-size: 12px;
+        }
+
+        .wallet-form .terms {
+            font-size: 12px;
+            text-decoration: none;
+            color: #039BE5;
+        }
+
+        .wallet-form .confirm-button {
+            height: 50px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wallet-form">
+        <form method="post">
+            {% csrf_token %}
+            <div class="container mt-5 mb-5 d-flex justify-content-center">
+                <div class="card px-1 py-4">
+                    <div class="card-body">
+                        <h1 class="card-title mb-3">Create your Wallet</h1>
+                        <h3 class="card-title mb-3">To get started.</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <!-- <label for="name">Name</label> -->
+                                    <input class="form-control" type="text" placeholder="Wallet Name" name="WalletName">
+                                </div>
                             </div>
                         </div>
+                        <h6 class="card-title mb-3" style="margin-top: 3%;">Select your Currency</h6>
+                        <div class="d-flex flex-row">
+                            <label class="radio mr-1">
+                                <input type="radio" name="WalletCurrency" value="NPR" checked>
+                                <span><i class="fa fa-user"></i> NPR </span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="WalletCurrency" value="USD">
+                                <span><i class="fa fa-plus-circle"></i> USD </span>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input class="form-control" type="number" placeholder="Wallet Capital"
+                                            name="WalletCapital">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column text-center px-5 mt-3 mb-3">
+                            <small class="agree-text">You can create and keep track of multiple wallets!</small>
+                            <a href="#" class="terms">Terms & Conditions</a>
+                        </div>
+                        <button class="btn btn-primary btn-block confirm-button" type="submit">Confirm</button>
                     </div>
                 </div>
-                <div class="d-flex flex-column text-center px-5 mt-3 mb-3">
-                    <small class="agree-text">You can create and keep track of multiple wallets!</small>
-                    <a href="#" class="terms">Terms & Conditions</a>
-                </div>
-                <button class="btn btn-primary btn-block confirm-button" type="submit">Confirm</button>
             </div>
-            
-        </div>
+        </form>
     </div>
-</form>
+</body>
+
+</html>
+
 {% endblock %}
