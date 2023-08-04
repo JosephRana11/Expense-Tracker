@@ -1,5 +1,6 @@
 from django.db import models
 from Capital.models import Wallet
+from users.models import CustomUser
 
 expense_choices = (
     ('Housing' , 'Housing'),

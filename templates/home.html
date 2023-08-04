@@ -11,7 +11,7 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">Add Income</a>
+              <a class="dropdown-item" href="{% url 'record-income'%}">Add Income</a>{% csrf_token %}
             </li>
             <li>
               <a class="dropdown-item" href="#">Deduct Expense</a>

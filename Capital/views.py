@@ -46,3 +46,4 @@ def edit_wallet_view(request , walletid):
     
     else:
      return render(request , 'edit-wallet.html', {'item':item})
+
